@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="refresh" content="20">
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+      .comment-item {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       }
+
+       .comment-name {
+         font-weight: bold;
+         margin-bottom: 10px;
+       }
+
+       .comment-content {
+         white-space: pre-wrap;
+         margin-bottom: 10px;
+       }
+
+       .comment-timestamp {
+         font-size: 0.9em;
+         color: #666;
+       }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+</head>
+<body>
+    <h1>留言</h1>
+    <div id="comments-container"></div>
+
+    <h2>发表</h2>
+    <div>
+        <div class="commit">
+            <p id="display-commit"></p>
+        </div>
+        <div class="push">
+            <input type="text" id="name" name="name" placeholder="名称">
+            <textarea id="commit" name="commit" placeholder="输入评论"></textarea>
+            <button id="submitBtn">发送</button>
+        </div>
+    </div>
+    <script src="comment.js"></script>
+</body>
+</html>
