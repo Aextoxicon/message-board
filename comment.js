@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayCommitElement = document.getElementById('display-commit');
     const submitBtn = document.getElementById('submitBtn');
     const commentsContainer = document.getElementById('comments-container');
-    const backendApiUrl = 'https://mbback.lwh2008.us.kg/api/comments'; // 示例地址
+    const backendApiUrl = ; // 示例地址'https://mbback.lwh2008.us.kg/api/comments'
     // 初始化时加载评论
     loadComments();
     submitBtn.addEventListener('click', async () => {
