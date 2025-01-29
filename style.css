@@ -1,16 +1,4 @@
-:root {
-    --vp-c-bg: #fff;
-}
-
-  [data-theme='dark'] {
-    --vp-c-bg: #1b1b1f;
-}
-
-  html,
-  body {
-    background-color: var(--vp-c-bg);
-}
-  .comment-item {
+ .comment-item {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 15px;
