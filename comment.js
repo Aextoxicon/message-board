@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayCommitElement = document.getElementById('display-commit');
     const submitBtn = document.getElementById('submitBtn');
     const commentsContainer = document.getElementById('comments-container');
-    const backendApiUrl = 'https://process.env.BACKEND_URL/api/comments'; // 后端服务器地址
+    const backendApiUrl = https://process.env.BACKEND_URL/api/comments; // 后端服务器地址
     // 初始化时加载评论
     loadComments();
     submitBtn.addEventListener('click', async () => {
