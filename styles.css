@@ -20,6 +20,7 @@
 .comment-timestamp {
      font-size: 0.9em;
      color: #666;
+     text-align: right;
 }
 .commit {
     margin-bottom: 20px;
