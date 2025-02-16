@@ -1,10 +1,10 @@
- .comment-item {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+.comment-item {
+    border: 1px solid #ccc;    
+    border-radius: 20px;
     padding: 15px;
     margin-bottom: 15px;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
    .comment-name {
@@ -18,7 +18,7 @@
 }
 
 .comment-timestamp {
-     font-size: 0.9em;
+     font-size: 0.7em;
      color: #666;
      text-align: right;
 }
@@ -40,4 +40,54 @@
     resize: both; /* 允许调整大小 */
     min-height: 100px; /* 最小高度 */
     width: 100%; /* 宽度占满父容器 */
+}
+
+/* 登录和注册样式 */
+form {
+    max-width: 20em;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    height: 100vh;           /* 视口高度 */
+}
+
+div + div {
+    margin-top: 1em;
+}
+
+label {
+    display: block;
+    margin-bottom: .5em;
+    color: #333333;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: .5em;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.7em;
+    color: #fff;
+    background-color: #000000;
+    border: 1px;
+    border-radius: 0.3em;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+}
+
+#registerForm {
+    text-align: center;
 }
