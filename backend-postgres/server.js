@@ -77,6 +77,6 @@ module.exports = app;
 // 在普通服务器启动
 if (require.main === module) {
   app.listen(5000, 0.0.0.0, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port 0.0.0.0:5000`);
   });
 }
