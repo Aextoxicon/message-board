@@ -70,10 +70,13 @@ app.get('/api/comments', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-// 启动服务器（适用于nodejs）
-//app.listen(5000, '0.0.0.0', () => {
-//  console.log(`Server running at //http://0.0.0.0:5000`);
-//});
 
-// 启动服务器（vercel）
+// 启动服务器（serverless）
 module.exports = app;
+
+// 在普通服务器启动
+if (require.main === module) {
+  app.listen(5000, 0.0.0.0, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
