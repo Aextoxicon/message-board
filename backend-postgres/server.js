@@ -5,18 +5,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet'); // 引入 helmet 中间件
 const allowedOrigins = ['https://cjysth.pages.dev', 'https://cjysth.equinox.us.kg'];
-
 // 加载环境变量
 dotenv.config();
 // 初始化 Express 应用
 const app = express();
-
 // 使用 helmet 中间件
 app.use(helmet());
-
 // 使用 body-parser 中间件
 app.use(bodyParser.json());
-
 // 使用 cors 中间件
 app.use(
   cors({
@@ -31,12 +27,10 @@ app.use(
     },
   })
 );
-
 // PostgreSQL 连接配置
 const pool = new Pool({
   connectionString: process.env.PSQL,
 });
-
 // 测试连接
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -45,19 +39,18 @@ pool.query('SELECT NOW()', (err, res) => {
     console.log('PostgreSQL connected'); // 添加日志：打印数据库连接成功
   }
 });
-
 // 提交评论
 app.post('/api/comments', async (req, res) => {
   console.log('Received POST request:', req.body); // 添加日志：打印请求体
-  const { name, comment } = req.body;
-  if (!name || !comment) {
-    console.error('Name and comment are required'); // 添加日志：打印缺失字段错误
-    return res.status(400).json({ message: 'Name and comment are required' });
+  const { title, comment } = req.body;
+  if (!title || !comment) {
+    console.error('Title and comment are required'); // 添加日志：打印缺失字段错误
+    return res.status(400).json({ message: 'Title and comment are required' });
   }
   try {
     const result = await pool.query(
-      'INSERT INTO comments (name, comment) VALUES ($1, $2) RETURNING *',
-      [name, comment]
+      'INSERT INTO comments (title, comment) VALUES ($1, $2) RETURNING *',
+      [title, comment]
     );
     console.log('Comment inserted:', result.rows[0]);
     res.status(201).json(result.rows[0]);
@@ -66,7 +59,6 @@ app.post('/api/comments', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 // 获取评论
 app.get('/api/comments', async (req, res) => {
   try {
@@ -78,9 +70,7 @@ app.get('/api/comments', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
-
 // 启动服务器
 app.listen(5000, '0.0.0.0', () => {
   console.log(`Server running at http://0.0.0.0:5000`);
 });
-//让Qwen加了下注释
