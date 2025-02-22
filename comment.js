@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayCommitElement = document.getElementById('display-commit');
     const submitBtn = document.getElementById('submitBtn');
     const commentsContainer = document.getElementById('comments-container');
-    const backendApiUrl = 'https://URL/api/commemts/'; // 后端地址
+    const backendApiUrl = '/backend-postgres/server.js'; // 后端地址
 
     // 初始化时加载评论
     loadComments();
