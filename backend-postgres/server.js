@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet'); // 引入 helmet 中间件
-const allowedOrigins = ['*'];
+const allowedOrigins = ['*']; //看情况改成前端地址
 // 加载环境变量
 dotenv.config();
 // 初始化 Express 应用
