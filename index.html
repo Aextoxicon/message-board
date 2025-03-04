@@ -6,35 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>留言板</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-      const userMode = localStorage.getItem('vuepress-color-scheme')
-      const systemDarkMode =
-        'matchMedia' in window
-          ? window.matchMedia('(prefers-color-scheme: dark)').matches
-          : false
-
-      if (userMode === 'light') {
-        document.documentElement.dataset.theme = 'light'
-      } else if (userMode === 'dark' || systemDarkMode) {
-        document.documentElement.dataset.theme = 'dark'
-      }
-    </script>
 </head>
 <body>
-    <h1>留言</h1>
+    <title>记录(目前未适配暗色模式,抱歉)</title>
+
     <div id="comments-container"></div>
 
-    <h2>发表</h2>
-    <div>
-        <div class="commit">
-            <p id="display-commit"></p>
-        </div>
-        <div class="push">
-            <input type="text" id="name" name="name" placeholder="帖子标题">
-            <textarea id="commit" name="commit" placeholder="输入内容"></textarea>
-            <button id="submitBtn">发布帖子</button>
-        </div>
+    <title>发表评论</title>
+
+<div>
+    <div class="comment">
+        <p id="display-comment"></p>
     </div>
-    <script src="comment.js"></script>
-</body>
-</html>
+    <div class="push">
+        <input type="text" id="title" name="title" placeholder="帖子标题">
+        <textarea id="comment" name="comment" placeholder="输入内容"></textarea>
+        <button id="submitBtn">发布帖子(提交会有延后请勿重复点击)</button>
+    </div>
+</div>
+<script src="comment.js"></script>
