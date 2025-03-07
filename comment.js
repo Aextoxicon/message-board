@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const inputElement1 = document.getElementById('title');
-    const inputElement2 = document.getElementById('commit');
+    const inputElement2 = document.getElementById('comment');
     const displayCommitElement = document.getElementById('display-commit');
     const submitBtn = document.getElementById('submitBtn');
     const commentsContainer = document.getElementById('comments-container');
