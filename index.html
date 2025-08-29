@@ -7,22 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>记录(目前未适配暗色模式,抱歉)</h1>
-
+    <h1>记录</h1>
+    <button class="write-post" onclick="window.location.href='push.html';">发表评论</button>
     <div id="comments-container"></div>
-
-    <h2>发表评论</h2>
-
-<div>
-    <div class="comment">
-        <p id="display-comment"></p>
-    </div>
-    <div class="push">
-        <input type="text" id="title" name="title" placeholder="帖子标题">
-        <textarea id="comment" name="comment" placeholder="输入内容"></textarea>
-        <button id="submitBtn">发布帖子(提交会有延后请勿重复点击)</button>
-    </div>
-</div>
-<script src="comment.js"></script>
+    <div id="pagination" class="pagination-container"></div>
+    <!-- 引入 marked 和 DOMPurify 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script src="comment.js"></script>
 </body>
 </html>

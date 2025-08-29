@@ -1,61 +1,208 @@
+:root {
+    color-scheme: light dark;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --border-color: #ccc;
+    --timestamp-color: #666;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --button-text: #fff;
+    --button-bg: rgba(211, 211, 211, 0.5);
+    --button-hover-bg: #333333;
+    --link-color: #000000;        /* 链接颜色 */
+    --link-hover-color: #0052a3;  /* 链接悬停颜色 */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #e0e0e0;
+        --bg-color: #1a1a1a;
+        --border-color: #404040;
+        --timestamp-color: #999;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --button-bg: #404040;
+        --button-hover-bg: #505050;
+        --link-color: #ffffff;      /* 暗色模式链接颜色 */
+        --link-hover-color: #99ccff;/* 暗色模式链接悬停颜色 */
+    }
+
+@media (prefers-color-scheme: dark) {
+    .comment-title {
+        color: #ffffff !important; /* 强制覆盖 */
+    }
+}
+
+    body {
+        background-color: #181818;
+        color: var(--text-color);
+    }
+    input, textarea {
+        background-color: #1a1a1a; /* 调整背景色以减少刺眼感 */
+        color: var(--text-color);
+        border-color: var(--border-color);
+    }
+}
+
+/* 评论项样式 */
 .comment-item {
-    border: 1px solid #ccc;    
+    margin: 0 auto;
+    max-width: 1080px;
+    border: 1px solid var(--border-color);    
     border-radius: 20px;
     padding: 15px;
     margin-bottom: 15px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-color);
+    box-shadow: 0 4px 10px var(--shadow-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    word-break: break-all
 }
 
-   .comment-name {
-     font-weight: bold;
-     margin-bottom: 10px;
+body .comment-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--link-color);     /* 使用链接颜色 */
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s;       /* 颜色过渡效果 */
+}
+
+body .comment-title:hover {
+    color: var(--link-hover-color); /* 使用链接悬停颜色 */
+    text-decoration: underline;
+    padding-bottom: 2px; /* 增加底部间距，避免视觉拥挤 */
 }
 
 .comment-content {
-     white-space: pre-wrap;
-     margin-bottom: 10px;
+    word-breal: break-all;
+    margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .comment-timestamp {
-     font-size: 0.7em;
-     color: #666;
-     text-align: right;
-}
-.commit {
-    margin-bottom: 20px;
+    font-size: 0.7em;
+    color: var(--timestamp-color);
+    text-align: right;
 }
 
+.write-post, .back-link {
+    position: fixed; /* 关键：使按钮相对于视口固定定位 */
+    top: 10px;       /* 距离页面顶部 20px */
+    right: 10px;     /* 距离页面右侧 20px */
+    border: 0;    
+    border-radius: 20px;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    z-index: 1000;   /* 确保按钮在其他内容之上 */
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+}
+
+/* 翻页按钮样式 */
+.prev-page-btn, .next-page-btn {
+    padding: 0.7em;
+    color: var(--button-text);
+    background-color: var(--button-bg);
+    border: none;
+    border-radius: 0.3em;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+}
+
+.prev-page-btn:hover, .next-page-btn:hover, .write-post:hover, .push-btn:hover, .back-link:hover{
+    background-color: var(--button-bg);
+    transform: translateY(-1px); /* 减小位移，避免抖动 */
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.prev-page-btn:active, .next-page-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* 分页样式 */
+#pagination {
+    position: fixed; /* 使容器相对于视口固定定位 */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; /* 水平居中 */
+    max-width: 300px;
+    display: flex;
+    justify-content: center; /* 元素水平居中 */
+    align-items: center; /* 元素垂直居中 */
+    border: 0;    
+    border-radius: 20px;
+    bottom: 10px;
+    padding: 20px;
+    gap: 5px;
+    z-index: 1000;   /* 确保容器在其他内容之上 */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    background-color: rgba(255, 255, 255, 0.2); /* 半透明背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+}
+
+.prev-page-btn.disabled, .next-page-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: rgba(0, 0, 0, 0.1); /* 更明显的禁用背景色 */
+}
+
+/* 推送布局 */
 .push {
+    margin: 0 auto;
+    max-width: 1080px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+.push-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 0;
+    border-radius: 20px;
+    max-width: 1080px;
+    font-size: 20px;
+    display: flex;
+    text-align: center;
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
 #name {
-    height: 24px; /* 设置固定高度 */
+    height: 2rem; /* 使用相对单位 */
 }
 
-#commit {
-    resize: both; /* 允许调整大小 */
-    min-height: 100px; /* 最小高度 */
-    width: 100%; /* 宽度占满父容器 */
+#comment {
+    resize: both;
+    min-height: 100px;
+    width: 100%;
 }
 
-/* 登录和注册样式 */
+/* 表单样式 */
 form {
-    max-width: 20em;
+    max-width: 80%; /* 根据屏幕宽度调整 */
     margin: auto;
     padding: 1em;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: 20px;
+    background-color: var(--bg-color);
 }
 
 .container {
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center;     /* 垂直居中 */
-    height: 100vh;           /* 视口高度 */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
 }
 
 div + div {
@@ -65,29 +212,22 @@ div + div {
 label {
     display: block;
     margin-bottom: .5em;
-    color: #333333;
+    color: var(--text-color);
 }
 
 input {
-    border: 1px solid #ccc;
+    padding: 0.7em;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
-    padding: .5em;
     font-size: 1em;
     width: 100%;
     box-sizing: border-box;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
-button {
-    padding: 0.7em;
-    color: #fff;
-    background-color: #000000;
-    border: 1px;
-    border-radius: 0.3em;
-    cursor: pointer;
-    font-size: 1em;
-    width: 100%;
-}
-
-#registerForm {
-    text-align: center;
+.post-content {
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+    color: var(--text-color);
 }

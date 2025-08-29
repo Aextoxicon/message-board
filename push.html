@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表评论</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="back-link" onclick="window.location.href='/';">返回留言板</button>
+    <h2>发表评论</h2>
+    <div class="push">
+        <input type="text" id="title" name="title" placeholder="帖子标题">
+        <textarea id="comment" name="comment" placeholder="输入内容"></textarea>
+        <button id="push-btn">发布帖子(提交会有延后请勿重复点击)</button>
+    </div>
+    <!-- 引入 marked 和 DOMPurify 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <script src="push.js"></script>
+</body>
+</html>
